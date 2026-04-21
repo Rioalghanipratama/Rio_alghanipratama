@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { 
   Mail, 
-  Phone, 
-  Github,
+  Phone,
   User, 
   GraduationCap, 
   Wrench, 
@@ -90,7 +89,7 @@ useEffect(() => {
 
             {/* Contacts Footer */}
             <div className="pt-12 space-y-4 border-t border-white/5">
-              <SidebarContact icon={<Github size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
+              <SidebarContact icon={<Globe size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
               <SidebarContact icon={<Mail size={16}/>} label="email" href="mailto:pratamagaming94@gmail.com" />
               <SidebarContact icon={<Phone size={16}/>} label="whatsapp" href="https://wa.me/6281390148362" />
             </div>
