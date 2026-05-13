@@ -7,7 +7,6 @@ import {
   Wrench, 
   Briefcase, 
   Code,
-  Globe,
   Database,
   Layout,
   BookOpen,
@@ -15,6 +14,10 @@ import {
   ShieldCheck,
   Zap
 } from 'lucide-react';
+import { BsGithub } from 'react-icons/bs';
+import andoliImg from './assets/andoli.png';
+import webkuImg from './assets/webku.png';
+import siakadImg from './assets/siakad.png';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState('profil');
@@ -55,7 +58,7 @@ useEffect(() => {
             <div className="space-y-6">
               <div className="relative inline-block">
                 <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center text-4xl font-bold text-white shadow-2xl">
-                  RA
+                  R
                 </div>
                 <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full border-4 border-[#050505] flex items-center justify-center">
                   <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
@@ -89,7 +92,7 @@ useEffect(() => {
 
             {/* Contacts Footer */}
             <div className="pt-12 space-y-4 border-t border-white/5">
-              <SidebarContact icon={<Globe size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
+              <SidebarContact icon={<BsGithub size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
               <SidebarContact icon={<Mail size={16}/>} label="email" href="mailto:pratamagaming94@gmail.com" />
               <SidebarContact icon={<Phone size={16}/>} label="whatsapp" href="https://wa.me/6281390148362" />
             </div>
@@ -130,42 +133,87 @@ function ProfilContent() {
 }
 
 function ProyekContent() {
+  const projects = [
+  {
+    title: "ANDOLI POS",
+    desc: "Platform POS (Point of Sale) kasir berbasis web dengan fokus pada efisiensi transaksi dan pengalaman pengguna premium.",
+    link: "https://andoli-pos.vercel.app/",
+    tech: ["React", "Tailwind", "Vercel"],
+    image: andoliImg
+  },
+
+  {
+    title: "WebKu Cek",
+    desc: "Website utility interaktif berbasis frontend untuk eksperimen dan pengujian sistem web kampus.",
+    link: "https://rioalghanipratama.github.io/WebKu-Cek/",
+    tech: ["HTML", "CSS", "JavaScript"],
+    image: webkuImg
+  },
+
+  {
+    title: "SIAKAD",
+    desc: "Sistem Informasi Akademik berbasis web untuk pengelolaan data mahasiswa dan administrasi akademik.",
+    link: "https://rioalghanipratama.github.io/SistemInformasiAkademik_SIAKAD/index.html",
+    tech: ["PHP", "MySQL", "Bootstrap"],
+    image: siakadImg
+  }
+];
+
   return (
     <div className="space-y-12">
       <SectionHeader title="Karya Terpilih" subtitle="01" />
       <div className="space-y-24">
-        <a 
-          href="https://forma-pos.vercel.app/" 
-          target="_blank" 
-          rel="noreferrer" 
-          className="group block cursor-pointer"
-        >
-          <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 aspect-video mb-8 transition-all duration-500 group-hover:border-blue-500/30">
-            {/* Visual Placeholder for Forma POS */}
-            <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-indigo-500/10 to-transparent">
-              <span className="text-white/10 font-black text-8xl italic tracking-tighter uppercase group-hover:scale-110 transition-transform duration-700">FORMA</span>
+        {projects.map((project, index) => (
+          <a
+            key={index}
+            href={project.link}
+            target="_blank"
+            rel="noreferrer"
+            className="group block cursor-pointer"
+          >
+      <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 aspect-video mb-8 transition-all duration-500 group-hover:border-blue-500/30">
+
+              {/* Background Visual */}
+              <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
+
+              {/* Tech Stack */}
+              <div className="absolute bottom-8 left-8">
+                <div className="flex gap-2 flex-wrap">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-bold text-white/50 border border-white/5 uppercase tracking-widest"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            
-            {/* Project Badges */}
-            <div className="absolute bottom-8 left-8">
-               <div className="flex gap-2">
-                 {['Next.js', 'Tailwind', 'Vercel'].map(t => (
-                   <span key={t} className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-bold text-white/50 border border-white/5 uppercase tracking-widest">
-                     {t}
-                   </span>
-                 ))}
-               </div>
+
+            {/* Project Info */}
+            <div className="flex justify-between items-end gap-6">
+              <div className="space-y-2">
+                <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                  {project.title}
+                </h3>
+                <p className="text-[#888] leading-relaxed">
+                  {project.desc}
+                </p>
+              </div>
+
+              <ArrowUpRight
+                className="text-white/20 group-hover:text-white group-hover:-translate-y-2 transition-all"
+                size={32}
+              />
             </div>
-          </div>
-          
-          <div className="flex justify-between items-end">
-            <div className="space-y-2">
-              <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">FORMA - Point of Sale</h3>
-              <p className="text-[#888]">Platform POS (Kasir) modern yang dirancang untuk kecepatan, akurasi, dan skalabilitas bisnis retail.</p>
-            </div>
-            <ArrowUpRight className="text-white/20 group-hover:text-white group-hover:-translate-y-2 transition-all" size={32} />
-          </div>
-        </a>
+          </a>
+        ))}
       </div>
     </div>
   );
@@ -176,9 +224,9 @@ function KeahlianContent() {
     <div className="space-y-16">
       <SectionHeader title="Keahlian Teknik" subtitle="02" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-12">
-        <SkillGroup title="Frontend" skills={['HTML5', 'CSS3', 'JavaScript', 'React JS', 'Tailwind CSS']} />
-        <SkillGroup title="Backend" skills={['PHP', 'MySQL', 'Database Design', 'REST API']} />
-        <SkillGroup title="Tools" skills={['Git & Github', 'UI/UX Basics', 'Office', 'Vercel']} />
+        <SkillGroup title="Frontend" skills={['HTML5','CSS3','JavaScript','React JS','Tailwind CSS','Responsive Design']} />
+        <SkillGroup title="Backend & Database" skills={['PHP','MySQL','Database Design','REST API Basics','Authentication System']} />
+        <SkillGroup title="Tools & Workflow" skills={['Git & GitHub','Vercel','VS Code','UI/UX Fundamentals','Office']} />
       </div>
     </div>
   );
