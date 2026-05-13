@@ -111,7 +111,6 @@ useEffect(() => {
 }
 
 // --- Page Components ---
-
 function ProfilContent() {
   return (
     <div className="space-y-16">
@@ -254,7 +253,6 @@ function PendidikanContent() {
 }
 
 // --- Reusable UI Atoms ---
-
 function SidebarContact({ icon, label, href }) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="flex items-center gap-3 group text-[#666] hover:text-white transition-colors">
