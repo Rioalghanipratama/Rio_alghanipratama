@@ -31,7 +31,7 @@ useEffect(() => {
   };
 
   return (
-    <div className="min-h-screen bg-[#050505] text-[#a0a0a0] font-light selection:bg-blue-500/30 overflow-x-hidden">
+    <div className="h-screen bg-[#050505] text-[#a0a0a0] font-light selection:bg-blue-500/30 overflow-hidden">
       
       {/* Cinematic Background */}
       <div className="fixed inset-0 z-0">
@@ -41,23 +41,14 @@ useEffect(() => {
         <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
       </div>
 
-      <div className={`relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row min-h-screen transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+      <div className={`relative z-10 max-w-[1400px] mx-auto flex flex-col lg:flex-row h-screen transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
         
         {/* Left Sidebar - Fixed Info */}
-        <aside className="w-full lg:w-[400px] p-8 lg:p-16 flex flex-col border-r border-white/10 bg-black/30 backdrop-blur-md shadow-2xl">
-          <div className="sticky top-16 space-y-16">
+        <aside className="w-full lg:w-[400px] lg:h-screen lg:sticky lg:top-0 p-6 lg:p-16 flex flex-col justify-between border-r border-white/5 bg-black/30 backdrop-blur-xl shadow-2xl">
+          <div className="space-y-16">
             
             {/* Identity */}
             <div className="space-y-6">
-              <div className="relative inline-block">
-                <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-white/10 to-white/5 border border-white/10 flex items-center justify-center text-4xl font-bold text-white shadow-2xl">
-                  R
-                </div>
-                <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-500 rounded-full border-4 border-[#050505] flex items-center justify-center">
-                  <div className="w-2 h-2 bg-white rounded-full animate-ping"></div>
-                </div>
-              </div>
-              
               <div className="space-y-2">
                 <h1 className="text-4xl font-bold tracking-tight text-white leading-tight">
                   Rio Alghani <br />
@@ -95,16 +86,30 @@ useEffect(() => {
             </nav>
 
             {/* Contacts Footer */}
-            <div className="pt-12 space-y-4 border-t border-white/10">
-              <SidebarContact icon={<BsGithub size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
-              <SidebarContact icon={<Mail size={16}/>} label="email" href="mailto:pratamagaming94@gmail.com" />
-              <SidebarContact icon={<Phone size={16}/>} label="whatsapp" href="https://wa.me/6281390148362" />
+            <div className="flex items-center gap-6 pt-8 border-t border-white/10">
+              <SidebarContact
+                icon={<BsGithub size={18} />}
+                label="GitHub"
+                href="https://github.com/Rioalghanipratama"
+              />
+
+              <SidebarContact
+                icon={<Mail size={18} />}
+                label="Email"
+                href="mailto:pratamagaming94@gmail.com"
+              />
+
+              <SidebarContact
+                icon={<Phone size={18} />}
+                label="WhatsApp"
+                href="https://wa.me/6281390148362"
+              />
             </div>
           </div>
         </aside>
 
         {/* Right Content Area */}
-        <main className="flex-1 p-8 lg:p-24 overflow-y-auto">
+        <main className="flex-1 h-screen overflow-y-auto scroll-smooth p-6 lg:p-24">
           <div key={activeTab} className="max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-700">
             {sections[activeTab]}
           </div>
@@ -284,9 +289,17 @@ function PendidikanContent() {
 // --- Reusable UI Atoms ---
 function SidebarContact({ icon, label, href }) {
   return (
-    <a href={href} target="_blank" rel="noreferrer" className="flex items-center gap-3 group text-[#666] hover:text-white transition-colors">
-      <div className="p-2 bg-white/5 rounded-lg group-hover:bg-blue-500/20 transition-colors">{icon}</div>
-      <span className="text-[10px] uppercase tracking-[0.3em] font-bold">{label}</span>
+    <a
+      href={href}
+      target="_blank"
+      rel="noreferrer"
+      className="flex items-center gap-2 text-white/40 hover:text-blue-400 transition-all duration-300"
+    >
+      {icon}
+
+      <span className="text-sm font-medium">
+        {label}
+      </span>
     </a>
   );
 }
