@@ -14,6 +14,7 @@ import {
   ShieldCheck,
   Zap
 } from 'lucide-react';
+import { TypeAnimation } from 'react-type-animation';
 import { BsGithub } from 'react-icons/bs';
 import andoliImg from './assets/andoli.png';
 import webkuImg from './assets/webku.png';
@@ -70,9 +71,20 @@ useEffect(() => {
                   Rio Alghani <br />
                   <span className="text-[#666]">Pratama</span>
                 </h1>
-                <p className="text-sm tracking-[0.3em] uppercase text-blue-400 font-bold">
-                  Sistem Informasi
-                </p>
+                <TypeAnimation
+                  sequence={[
+                    'UI/UX Enthusiast',
+                    2000,
+                    'Frontend Developer',
+                    2000,
+                    'Backend Developer',
+                    2000,
+                  ]}
+                  wrapper="p"
+                  speed={50}
+                  repeat={Infinity}
+                  className="text-sm tracking-[0.15em] text-blue-400 font-bold drop-shadow-[0_0_8px_rgba(59,130,246,0.8)]"
+                  />
               </div>
             </div>
 
@@ -125,7 +137,7 @@ function ProfilContent() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <StatBox icon={<ShieldCheck className="text-emerald-500"/>} title="Fokus" desc="Arsitektur Sistem" />
-        <StatBox icon={<Zap className="text-yellow-500"/>} title="Metode" desc="Agile Development" />
+        <StatBox icon={<Zap className="text-yellow-500"/>} title="Metode" desc="Agile Scrum" />
       </div>
     </div>
   );
@@ -174,9 +186,9 @@ function ProyekContent() {
 
               {/* Background Visual */}
               <img
-              src={project.image}
-              alt={project.title}
-              className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
 
