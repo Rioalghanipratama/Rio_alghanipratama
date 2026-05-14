@@ -126,19 +126,41 @@ useEffect(() => {
 function ProfilContent() {
   return (
     <div className="space-y-16">
-      <header className="space-y-8">
-        <h2 className="text-5xl lg:text-7xl font-bold text-white tracking-tighter leading-none">
-          Membangun masa depan lewat <span className="text-blue-500 italic">data</span> & <span className="text-white/40">logika.</span>
-        </h2>
-        <p className="text-xl leading-relaxed text-[#888] font-light">
-          Berbasis di Indonesia, saya mengkhususkan diri dalam pengembangan sistem informasi modern. Menggabungkan arsitektur database yang kuat dengan antarmuka web yang intuitif.
-        </p>
-      </header>
+      <p className="max-w-2xl text-lg leading-relaxed text-[#888] font-light">
+        Dunia teknologi menjadi hal yang selalu menarik bagi saya sejak menempuh pendidikan di 
+        <a
+        href="https://smkdaka.sch.id/"
+        target="_blank"
+        rel="noreferrer"
+        className="text-white hover:text-blue-400 transition-all duration-300"
+        >
+          {" "}SMK Darussalam Karangpucung{" "}
+        </a> 
+        dengan jurusan Teknik Komputer dan Jaringan. Dari sana, saya mulai mengenal bagaimana teknologi dapat membantu menciptakan solusi yang bermanfaat dan mempermudah berbagai aktivitas.
+        Ketertarikan tersebut membawa saya untuk melanjutkan pendidikan di 
+        <a
+          href="https://unikma.ac.id/"
+          target="_blank"
+          rel="noreferrer"
+          className="text-white hover:text-blue-400 transition-all duration-300"
+        >
+          {" "}Universitas Komputama Majenang{" "}
+        </a> 
+        pada program studi Sistem Informasi, sekaligus terus mengembangkan kemampuan dalam pengembangan web modern, desain antarmuka, dan pengalaman pengguna.
+        Saya menikmati proses membangun sebuah aplikasi mulai dari ide, tampilan, hingga bagaimana aplikasi tersebut dapat memberikan pengalaman yang nyaman, responsif, dan mudah digunakan.
+      </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <StatBox icon={<ShieldCheck className="text-emerald-500"/>} title="Fokus" desc="Arsitektur Sistem" />
-        <StatBox icon={<Zap className="text-yellow-500"/>} title="Metode" desc="Agile Scrum" />
-      </div>
+      <StatBox
+  icon={<ShieldCheck className="text-cyan-400" />}
+  title="Clean Architecture"
+  desc="Mengembangkan sistem dengan struktur yang rapi, scalable, dan efisien."
+/>
+
+<StatBox
+  icon={<Zap className="text-yellow-400" />}
+  title="Modern Interface"
+  desc="Menciptakan antarmuka yang responsif, elegan, dan nyaman digunakan."
+/>
     </div>
   );
 }
@@ -285,8 +307,8 @@ function SectionHeader({ title, subtitle }) {
 
 function StatBox({ icon, title, desc }) {
   return (
-    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-white/10 transition-all group">
-      <div className="mb-4 transition-transform group-hover:scale-110 duration-500">{icon}</div>
+    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-blue-500/20 hover:bg-white/[0.07] transition-all duration-500 group hover:-translate-y-1">
+      <div className="mb-4 transition-transform group-hover:scale-125 duration-500">{icon}</div>
       <h4 className="text-white font-bold text-lg">{title}</h4>
       <p className="text-sm text-[#666]">{desc}</p>
     </div>
