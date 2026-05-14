@@ -2,14 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { 
   Mail, 
   Phone,
-  User, 
-  GraduationCap, 
-  Wrench, 
-  Briefcase, 
-  Code,
-  Database,
-  Layout,
-  BookOpen,
   ArrowUpRight,
   ShieldCheck,
   Zap
@@ -52,8 +44,8 @@ useEffect(() => {
       <div className={`relative z-10 max-w-7xl mx-auto flex flex-col lg:flex-row min-h-screen transition-all duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
         
         {/* Left Sidebar - Fixed Info */}
-        <aside className="w-full lg:w-[400px] p-8 lg:p-16 flex flex-col border-r border-white/5 bg-black/20 backdrop-blur-md">
-          <div className="sticky top-16 space-y-12">
+        <aside className="w-full lg:w-[400px] p-8 lg:p-16 flex flex-col border-r border-white/10 bg-black/30 backdrop-blur-md shadow-2xl">
+          <div className="sticky top-16 space-y-16">
             
             {/* Identity */}
             <div className="space-y-6">
@@ -96,14 +88,14 @@ useEffect(() => {
                   onClick={() => setActiveTab(key)}
                   className={`group flex items-center gap-4 text-left transition-all duration-300 ${activeTab === key ? 'text-white translate-x-4' : 'hover:text-white hover:translate-x-2'}`}
                 >
-                  <span className={`h-px transition-all duration-500 bg-white ${activeTab === key ? 'w-12' : 'w-4 group-hover:w-8'}`}></span>
+                  <span className={`h-px transition-all duration-700 bg-white ${activeTab === key ? 'w-12' : 'w-4 group-hover:w-8'}`}></span>
                   <span className="text-xs uppercase tracking-[0.4em] font-black">{key}</span>
                 </button>
               ))}
             </nav>
 
             {/* Contacts Footer */}
-            <div className="pt-12 space-y-4 border-t border-white/5">
+            <div className="pt-12 space-y-4 border-t border-white/10">
               <SidebarContact icon={<BsGithub size={16}/>} label="github" href="https://github.com/Rioalghanipratama" />
               <SidebarContact icon={<Mail size={16}/>} label="email" href="mailto:pratamagaming94@gmail.com" />
               <SidebarContact icon={<Phone size={16}/>} label="whatsapp" href="https://wa.me/6281390148362" />
@@ -113,7 +105,7 @@ useEffect(() => {
 
         {/* Right Content Area */}
         <main className="flex-1 p-8 lg:p-24 overflow-y-auto">
-          <div className="max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-1000">
+          <div key={activeTab} className="max-w-3xl animate-in fade-in slide-in-from-bottom-8 duration-700">
             {sections[activeTab]}
           </div>
         </main>
@@ -136,7 +128,9 @@ function ProfilContent() {
         >
           {" "}SMK Darussalam Karangpucung{" "}
         </a> 
-        dengan jurusan Teknik Komputer dan Jaringan. Dari sana, saya mulai mengenal bagaimana teknologi dapat membantu menciptakan solusi yang bermanfaat dan mempermudah berbagai aktivitas.
+        dengan jurusan Teknik Komputer dan Jaringan (TKJ). Dari sana, saya mulai mengenal bagaimana teknologi dapat membantu menciptakan solusi yang bermanfaat dan mempermudah berbagai aktivitas.
+      </p>
+      <p className="max-w-2xl text-lg leading-relaxed text-[#888] font-light">
         Ketertarikan tersebut membawa saya untuk melanjutkan pendidikan di 
         <a
           href="https://unikma.ac.id/"
@@ -146,21 +140,22 @@ function ProfilContent() {
         >
           {" "}Universitas Komputama Majenang{" "}
         </a> 
-        pada program studi Sistem Informasi, sekaligus terus mengembangkan kemampuan dalam pengembangan web modern, desain antarmuka, dan pengalaman pengguna.
+        pada program studi Sistem Informasi (SI), sekaligus terus mengembangkan kemampuan dalam pengembangan web modern, desain antarmuka, dan pengalaman pengguna.
         Saya menikmati proses membangun sebuah aplikasi mulai dari ide, tampilan, hingga bagaimana aplikasi tersebut dapat memberikan pengalaman yang nyaman, responsif, dan mudah digunakan.
       </p>
 
-      <StatBox
-  icon={<ShieldCheck className="text-cyan-400" />}
-  title="Clean Architecture"
-  desc="Mengembangkan sistem dengan struktur yang rapi, scalable, dan efisien."
-/>
-
-<StatBox
-  icon={<Zap className="text-yellow-400" />}
-  title="Modern Interface"
-  desc="Menciptakan antarmuka yang responsif, elegan, dan nyaman digunakan."
-/>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <StatBox
+          icon={<ShieldCheck className="text-blue-400" />}
+          title="Web Development"
+          desc="Membangun aplikasi web modern dengan fokus pada performa dan pengalaman pengguna."
+        />
+        <StatBox
+          icon={<Zap className="text-yellow-400" />}
+          title="UI & Experience"
+          desc="Menciptakan tampilan yang minimalis, responsif, dan nyaman digunakan."
+        />
+      </div>
     </div>
   );
 }
@@ -168,8 +163,8 @@ function ProfilContent() {
 function ProyekContent() {
   const projects = [
   {
-    title: "ANDOLI POS",
-    desc: "Platform POS (Point of Sale) kasir berbasis web dengan fokus pada efisiensi transaksi dan pengalaman pengguna premium.",
+    title: "AnDoli POS",
+    desc: "AnDoli POS merupakan aplikasi kasir modern yang saya bangun untuk membantu proses transaksi menjadi lebih cepat, efisien, dan mudah digunakan. Fokus utama saya pada proyek ini adalah menciptakan antarmuka yang bersih serta pengalaman pengguna yang nyaman untuk kebutuhan bisnis retail modern.",
     link: "https://andoli-pos.vercel.app/",
     tech: ["React", "Tailwind", "Vercel"],
     image: andoliImg
@@ -177,7 +172,7 @@ function ProyekContent() {
 
   {
     title: "WebKu Cek",
-    desc: "Website utility interaktif berbasis frontend untuk eksperimen dan pengujian sistem web kampus.",
+    desc: "WebKu Cek merupakan website informasi kampus yang saya kembangkan untuk mempermudah penyampaian informasi akademik dan akses layanan digital secara lebih praktis. Pada proyek ini, saya berfokus pada pembuatan tampilan yang sederhana, navigasi yang mudah dipahami, serta desain responsif agar website tetap nyaman diakses melalui berbagai perangkat.",
     link: "https://rioalghanipratama.github.io/WebKu-Cek/",
     tech: ["HTML", "CSS", "JavaScript"],
     image: webkuImg
@@ -185,7 +180,7 @@ function ProyekContent() {
 
   {
     title: "SIAKAD",
-    desc: "Sistem Informasi Akademik berbasis web untuk pengelolaan data mahasiswa dan administrasi akademik.",
+    desc: "Sistem Informasi Akademik (SIAKAD) merupakan proyek yang saya kembangkan untuk membantu pengelolaan data akademik secara lebih terstruktur dan efisien. Dalam pengembangannya, saya berfokus pada pembuatan alur sistem yang mudah dipahami, tampilan yang responsif, serta pengelolaan data yang terintegrasi untuk mendukung kebutuhan pengguna dalam lingkungan akademik.",
     link: "https://rioalghanipratama.github.io/SistemInformasiAkademik_SIAKAD/index.html",
     tech: ["PHP", "MySQL", "Bootstrap"],
     image: siakadImg
@@ -193,7 +188,7 @@ function ProyekContent() {
 ];
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-16">
       <SectionHeader title="Karya Terpilih" subtitle="01" />
       <div className="space-y-24">
         {projects.map((project, index) => (
@@ -204,13 +199,13 @@ function ProyekContent() {
             rel="noreferrer"
             className="group block cursor-pointer"
           >
-      <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 aspect-video mb-8 transition-all duration-500 group-hover:border-blue-500/30">
+      <div className="relative overflow-hidden rounded-3xl bg-white/5 border border-white/10 aspect-video mb-8 transition-all duration-700 group-hover:border-blue-500/30">
 
               {/* Background Visual */}
               <img
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover opacity-70 group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent"></div>
 
@@ -220,7 +215,7 @@ function ProyekContent() {
                   {project.tech.map((t) => (
                     <span
                       key={t}
-                      className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-bold text-white/50 border border-white/5 uppercase tracking-widest"
+                      className="px-3 py-1 bg-black/50 backdrop-blur-md rounded-lg text-[10px] font-bold text-white/50 border border-white/10 uppercase tracking-widest"
                     >
                       {t}
                     </span>
@@ -269,7 +264,7 @@ function PendidikanContent() {
   return (
     <div className="space-y-16">
       <SectionHeader title="Riwayat Akademis" subtitle="03" />
-      <div className="space-y-12">
+      <div className="space-y-16">
         <EduItem 
           school="Universitas Komputama Majenang" 
           degree="S1 Sistem Informasi" 
@@ -278,7 +273,7 @@ function PendidikanContent() {
         />
         <EduItem 
           school="SMK Darussalam Karangpucung" 
-          degree="Sekolah Menengah Kejuruan" 
+          degree="Teknik Komputer dan Jaringan" 
           period="2020 — 2023" 
         />
       </div>
@@ -300,15 +295,15 @@ function SectionHeader({ title, subtitle }) {
   return (
     <div className="flex items-baseline gap-4 mb-12">
       <span className="text-sm font-black text-blue-500 tracking-tighter">{subtitle}</span>
-      <h3 className="text-4xl font-bold text-white tracking-tight uppercase">{title}</h3>
+      <h3 className="text-4xl font-bold text-white tracking-tight">{title}</h3>
     </div>
   );
 }
 
 function StatBox({ icon, title, desc }) {
   return (
-    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/5 hover:border-blue-500/20 hover:bg-white/[0.07] transition-all duration-500 group hover:-translate-y-1">
-      <div className="mb-4 transition-transform group-hover:scale-125 duration-500">{icon}</div>
+    <div className="p-8 rounded-[2rem] bg-white/5 border border-white/10 hover:border-blue-500/20 hover:bg-white/[0.07] transition-all duration-700 group hover:-translate-y-1">
+      <div className="mb-4 transition-transform group-hover:scale-125 duration-700">{icon}</div>
       <h4 className="text-white font-bold text-lg">{title}</h4>
       <p className="text-sm text-[#666]">{desc}</p>
     </div>
@@ -318,7 +313,7 @@ function StatBox({ icon, title, desc }) {
 function SkillGroup({ title, skills }) {
   return (
     <div className="space-y-6">
-      <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white/30 border-b border-white/5 pb-2">{title}</h4>
+      <h4 className="text-xs font-black uppercase tracking-[0.3em] text-white/30 border-b border-white/10 pb-2">{title}</h4>
       <div className="flex flex-wrap gap-3">
         {skills.map(s => (
           <span key={s} className="text-sm text-white hover:text-blue-400 cursor-default transition-colors">
@@ -332,7 +327,7 @@ function SkillGroup({ title, skills }) {
 
 function EduItem({ school, degree, period, current }) {
   return (
-    <div className="relative pl-8 border-l border-white/5 group">
+    <div className="relative pl-8 border-l border-white/10 group">
       <div className={`absolute -left-1 top-0 w-2 h-2 rounded-full ${current ? 'bg-blue-500 shadow-[0_0_15px_rgba(59,130,246,0.5)]' : 'bg-white/20'}`}></div>
       <div className="space-y-1">
         <span className="text-[10px] font-bold text-blue-500 tracking-widest uppercase">{period}</span>
